@@ -31,7 +31,14 @@ class _WelcomePageState extends State<WelcomePage> {
                     image: DecorationImage(
                         image: AssetImage("img/" + images[index]),
                         fit: BoxFit.cover)),
-                child: Container(),
+                child: Container(
+                  margin: const EdgeInsets.only(top: 150, left: 20, right: 20),
+                  child: Row(children: [
+                    Column(
+                      children: [],
+                    )
+                  ]),
+                ),
               );
             }));
   }
