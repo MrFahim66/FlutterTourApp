@@ -1,16 +1,13 @@
-# travelapp
+# Travel-Application-Flutter
 
-A new Flutter project.
+ A flutter application for learning.
 
-## Getting Started
+ This repository was solely built for learning purposes.
 
-This project is a starting point for a Flutter application.
+ This code has been written with the help of [DBestech](https://www.youtube.com/c/dbestech)'s video: [2022 Flutter Master Class Travel App | Tutorial for Beginners to Advanced | iOS & Android App](https://www.youtube.com/watch?v=x4DydJKVvQk)
 
-A few resources to get you started if this is your first Flutter project:
+.apk files are readily built under /build/app/outputs/flutter-apk
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Licence
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The MIT Licence - Check LICENCE.md for more information.

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:travelapp/pages/navpages/bar_item.dart';
-import 'package:travelapp/pages/navpages/home_page.dart';
-import 'package:travelapp/pages/navpages/my_page.dart';
-import 'package:travelapp/pages/navpages/search_page.dart';
+import 'package:travel_application/misc/colors.dart';
+import 'package:travel_application/pages/home_page.dart';
+import 'package:travel_application/pages/navpages/my_page.dart';
+import 'package:travel_application/pages/navpages/search_page.dart';
+import 'package:travel_application/pages/navpages/bar_item_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -15,13 +13,18 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [HomePage(), BarItemPage(), SearchPage(), MyPage()];
+  List pages = [
+    const HomePage(), // 0
+    const BarItemPage(),
+    const SearchPage(),
+    const MyPage(),
+  ];
 
-  // Setting Current Index and Changing
-  int currentIndex = 0;
-  void onTap(int index) {
+  int _currentIndex = 0;
+
+  void _onTap(int index) {
     setState(() {
-      currentIndex = index;
+      _currentIndex = index;
     });
   }
 
@@ -29,26 +32,43 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: pages[currentIndex],
+      body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-          unselectedFontSize: 0,
-          selectedFontSize: 0,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.cyan,
-          onTap: onTap,
-          currentIndex: currentIndex,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black.withOpacity(0.4),
-          showUnselectedLabels: false,
-          showSelectedLabels: false,
-          elevation: 0,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.apps), label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart_sharp), label: 'Bar'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My'),
-          ]),
+        // type: BottomNavigationBarType.fixed, // For colours it has to be fixed.
+
+        backgroundColor: Colors.cyan,
+
+        onTap: _onTap,
+
+        currentIndex:
+            _currentIndex, // Current index of the bottom navigation bar.
+
+        selectedItemColor: AppColors.mainColor,
+        unselectedItemColor: AppColors.mainColor.withOpacity(0.3),
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+
+        elevation: 0,
+
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.apps),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: "Bar",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: "Search",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
+        ],
+      ),
     );
   }
 }
