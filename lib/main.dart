@@ -1,43 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travel_application/cubit/app_cubits.dart';
-import 'package:travel_application/pages/detail_page.dart';
-import 'package:travel_application/pages/home_page.dart';
-import 'package:travel_application/pages/navpages/main_page.dart';
-import 'package:travel_application/pages/welcome_page.dart';
-import 'package:travel_application/services/data_services.dart';
-
-import 'cubit/app_cubit_logics.dart';
+import 'package:travel_app/core/constants/color_constants.dart';
+import 'package:travel_app/representation/screens/splash_screen.dart';
+import 'package:travel_app/routes.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Travel App',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: BlocProvider<AppCubits>(
-        create: (context) => AppCubits(
-          data: DataServices(),
-        ),
-        child: const AppCubitLogics(),
+          primaryColor: ColorPalette.primaryColor,
+          scaffoldBackgroundColor: ColorPalette.backgroundScaffoldColor,
+          backgroundColor: ColorPalette.backgroundColor),
+      home: const MyHomePage(),
+      routes: routes,
+      onGenerateRoute: generateRoutes,
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        child: SplashScreen(),
       ),
     );
   }
